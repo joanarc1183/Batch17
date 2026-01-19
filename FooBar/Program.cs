@@ -10,26 +10,28 @@ namespace NamaProyek
             int n = 105;
             for (int i=1; i<=n; i++)
             {
-                string output = "";
+                string result = "";
+
                 if (i%3 == 0)
                 {
-                    output += "foo";
+                    result += "foo";
                 } 
                 if (i%5 == 0)
                 {
-                    output += "bar";
+                    result += "bar";
                 }
                 if (i % 7 == 0)
                 {
-                    output += "jazz";
+                    result += "jazz";
                 } 
-                if (output=="")
+
+                if (result=="")
                 {
                     System.Console.WriteLine(i);
                 }
                 else
                 {
-                    System.Console.WriteLine(output);
+                    System.Console.WriteLine(result);
                 }
             }
             
