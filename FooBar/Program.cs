@@ -24,6 +24,10 @@ namespace NamaProyek
                 {
                     result += "jazz";
                 } 
+                if (i % 9 == 0)
+                {
+                    result += "huzz";
+                }
 
                 if (result=="")
                 {
