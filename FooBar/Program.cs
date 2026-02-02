@@ -1,48 +1,62 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
+﻿using System;
 
 namespace NamaProyek
 {
- class Program
-   {
+    class Program
+    {
        static void Main(string[] args)
        {
+            NumberToWordGenerator generator = new NumberToWordGenerator();
+
+            generator.AddRule(3, "foo");
+            generator.AddRule(4, "baz");
+            generator.AddRule(5, "bar");
+            generator.AddRule(7, "jazz");
+            generator.AddRule(9, "huzz");
+
             int n = 105;
             for (int i=1; i<=n; i++)
             {
-                string result = "";
-
-                if (i%3 == 0)
+                System.Console.Write(generator.Generate(i));
+                if (i < n)
                 {
-                    result += "foo";
-                } 
-                if (i % 4 == 0)
-                {
-                    result += "baz";
-                }
-                if (i%5 == 0)
-                {
-                    result += "bar";
-                }
-                if (i % 7 == 0)
-                {
-                    result += "jazz";
-                } 
-                if (i % 9 == 0)
-                {
-                    result += "huzz";
-                }
-
-                if (result=="")
-                {
-                    System.Console.WriteLine(i);
-                }
-                else
-                {
-                    System.Console.WriteLine(result);
+                    System.Console.Write(", ");
                 }
             }
-            
-       }
+        }
+    }
+
+    class NumberToWordGenerator{
+        private readonly Dictionary<int, string> _rules;
+
+        public NumberToWordGenerator()
+        {
+            _rules = new();
+        }
+        public void AddRule(int input, string output)
+        {
+            if (input > 0)
+            {
+                _rules[input] = output;
+            }
+        }
+
+        public string Generate(int number)
+        {
+            string result = "";
+            foreach(var rule in _rules)
+            {
+                if (number%rule.Key == 0)
+                {
+                    result += rule.Value;
+                }
+            }
+
+            if (result.Length == 0)
+            {
+                result = number.ToString();
+            }
+            return result;
+        }
    }
 }
