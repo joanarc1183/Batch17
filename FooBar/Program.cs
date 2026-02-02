@@ -16,6 +16,10 @@ namespace NamaProyek
                 {
                     result += "foo";
                 } 
+                if (i % 4 == 0)
+                {
+                    result += "baz";
+                }
                 if (i%5 == 0)
                 {
                     result += "bar";
